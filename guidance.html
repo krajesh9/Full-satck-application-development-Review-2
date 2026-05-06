@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance Roadmap | NexGen Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .roadmap-container { max-width: 900px; margin: 8rem auto 4rem; padding: 0 2rem; }
+        
+        .timeline {
+            position: relative;
+            margin: 4rem 0;
+            padding-left: 2rem;
+            border-left: 3px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 3rem;
+            background: rgba(20, 20, 40, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+        .timeline-step:hover {
+            border-color: var(--neon-cyan);
+            transform: translateX(10px);
+        }
+        .timeline-marker {
+            position: absolute;
+            left: -37px;
+            top: 2rem;
+            width: 24px;
+            height: 24px;
+            background: var(--bg-dark);
+            border: 4px solid var(--neon-purple);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+        .step-completed .timeline-marker {
+            background: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+        .step-title { font-size: 1.5rem; margin-bottom: 1rem; color: white; display: flex; justify-content: space-between; }
+        .step-tag { font-size: 0.8rem; padding: 0.3rem 0.8rem; background: rgba(138,43,226,0.2); border-radius: 20px; color: var(--neon-pink);}
+        .course-link { margin-top: 1rem; display: inline-block; color: var(--neon-cyan); text-decoration: none; border: 1px solid var(--neon-cyan); padding: 0.5rem 1rem; border-radius: 8px;}
+        .course-link:hover { background: rgba(0,240,255,0.1); }
+    </style>
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo"><span class="gradient-text"><i class="fa-solid fa-brain"></i> NexGen</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Job Search</a></li>
+                <li><a href="analysis.html">Skill Gap Analysis</a></li>
+                <li><a href="guidance.html">Career Guidance</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="roadmap-container">
+        <h1 class="gradient-text" style="font-size: 3rem; text-align: center;">Your Personalized Guidance Plan</h1>
+        <p style="color: var(--text-secondary); text-align: center; margin-top: 1rem;">Based on your Gap Analysis, the AI has generated this optimal path to reach your goal: Senior Frontend Developer.</p>
+        
+        <div class="timeline">
+            <!-- Step 1 Complete -->
+            <div class="timeline-step step-completed">
+                <div class="timeline-marker"></div>
+                <div class="step-title">
+                    Master Advanced React Hooks <span class="step-tag"><i class="fa-solid fa-check"></i> Completed</span>
+                </div>
+                <p style="color: var(--text-secondary);">You successfully completed this tier. Your match score increased by +12%.</p>
+            </div>
+            
+            <!-- Step 2 Ongoing -->
+            <div class="timeline-step" style="border-color: rgba(138, 43, 226, 0.6); box-shadow: 0 0 20px rgba(138,43,226,0.1);">
+                <div class="timeline-marker"></div>
+                <div class="step-title">
+                    Learn Redux Toolkit & Zustand <span class="step-tag" style="background: rgba(0,240,255,0.1); color: var(--neon-cyan);"><i class="fa-solid fa-spinner"></i> In Progress</span>
+                </div>
+                <p style="color: var(--text-secondary);">This is your primary gap holding you back from 90% of Senior level applications.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="#" class="course-link"><i class="fa-solid fa-graduation-cap"></i> Coursera: Advanced State Management</a>
+                    <a href="#" class="course-link" style="border-color: var(--text-secondary); color: white;"><i class="fa-solid fa-play"></i> YouTube Full Crash Course</a>
+                </div>
+            </div>
+            
+            <!-- Step 3 Future -->
+            <div class="timeline-step">
+                <div class="timeline-marker" style="border-color: var(--text-secondary); box-shadow: none;"></div>
+                <div class="step-title">
+                    Webpack to Vite Migration Architecture <span class="step-tag" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);"><i class="fa-solid fa-lock"></i> Locked</span>
+                </div>
+                <p style="color: var(--text-secondary);">Highly requested skill by Top Tier Startups. Address this after your state management courses.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button class="btn btn-primary btn-lg" onclick="window.location.href='jobs.html'">Start Applying Now (75% Match)</button>
+        </div>
+    </div>
+</body>
+</html>

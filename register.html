@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | NexGen Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .register-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .register-visual {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(20, 20, 40, 0.9), rgba(138, 43, 226, 0.4)), url('https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+        @media (max-width: 900px) {
+            .register-visual { display: none; }
+        }
+        .visual-content {
+            z-index: 2;
+            max-width: 500px;
+        }
+        .visual-content h2 { font-size: 3rem; margin-bottom: 1rem; }
+        .visual-content p { font-size: 1.2rem; color: #e2c2ff; }
+        
+        .register-form-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            background: var(--bg-dark);
+        }
+        
+        .form-toggles {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            border-radius: 50px;
+        }
+        .role-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 50px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .role-btn.active {
+            background: var(--neon-purple);
+            color: white;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            color: white;
+            outline: none;
+            transition: var(--transition);
+        }
+        .form-input:focus {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 10px rgba(255, 42, 133, 0.2);
+        }
+        .btn-full { width: 100%; margin-top: 1rem; }
+        .back-nav { margin-bottom: 2rem; display: inline-block; color: var(--text-secondary); text-decoration: none; }
+        .back-nav:hover { color: white; }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-form-area">
+            <a href="index.html" class="back-nav"><i class="fa-solid fa-arrow-left"></i> Home</a>
+            <h2>Create Your Account</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Join NexGen to unlock AI tools and discover smart career paths.</p>
+            
+            <div class="form-toggles">
+                <button class="role-btn active">I'm a Candidate</button>
+                <button class="role-btn">I'm an Employer</button>
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:0">
+                        <label class="form-label">First Name</label>
+                        <input type="text" id="reg-firstname" class="form-input" placeholder="John" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-input" placeholder="Doe" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="reg-email" class="form-input" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="reg-password" class="form-input" placeholder="Create a strong password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+            </form>
+            <p style="margin-top: 2rem; text-align: center; color: var(--text-secondary);">
+                Already have an account? <a href="login.html" style="color: var(--neon-cyan); text-decoration: none;">Log In</a>
+            </p>
+        </div>
+        <div class="register-visual">
+            <div class="visual-content">
+                <h2>The Future of Hiring</h2>
+                <p>Build your professional profile, analyze skill gaps, and land opportunities perfectly matching your potential.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const firstName = document.getElementById('reg-firstname').value;
+            
+            // Save to MySQL database via fetch API
+            fetch('http://localhost:3000/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: firstName, email: email, password: password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.error) {
+                    alert('Error: ' + data.error);
+                } else {
+                    alert('Registration Successful! Please log in with your new credentials.');
+                    window.location.href = 'login.html';
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Server connection failed. Make sure you run "node server.js".');
+            });
+        });
+    </script>
+</body>
+</html>

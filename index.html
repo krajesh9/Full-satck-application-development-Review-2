@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGen Careers | AI-Powered Smart Job Portal</title>
+    <meta name="description" content="AI Smart Job Portal Management System with Skill Gap Analysis and Personalized Career Guidance.">
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="gradient-text"><i class="fa-solid fa-brain"></i> NexGen</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Job Search</a></li>
+                <li><a href="analysis.html">Skill Gap Analysis</a></li>
+                <li><a href="guidance.html">Career Guidance</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-outline" id="loginBtn">Log In</button>
+                <button class="btn btn-primary" onclick="window.location.href='register.html'">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-icon">✨</span> AI-Powered System 3.0 Live
+            </div>
+            <h1 class="hero-title">Unlock Your Potential with <br/><span class="gradient-text">Smart Career Matching</span></h1>
+            <p class="hero-description">Stop guessing. Let our advanced AI analyze your skills, identify gaps, and craft a personalized career trajectory to land your dream job faster.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-lg" onclick="window.location.href='analysis.html'">Run AI Skill Analysis <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn btn-glass btn-lg" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-play"></i> Watch Demo</button>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Match Accuracy</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500k+</h3>
+                    <p>Jobs Analyzed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>3x</h3>
+                    <p>Faster Hiring</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2 class="section-title">Beyond Traditional Hiring</h2>
+            <p class="section-subtitle">A management system engineered to bridge the gap between talent and opportunity.</p>
+        </div>
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card glass-card">
+                <div class="feature-icon feature-icon-purple">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <h3>Skill Gap Analysis</h3>
+                <p>Upload your resume and let our AI compare your profile against thousands of active job descriptions, instantly identifying missing skills.</p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="feature-card glass-card">
+                <div class="feature-icon feature-icon-cyan">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <h3>Personalized Guidance</h3>
+                <p>Receive a dynamic, step-by-step roadmap to acquire the skills you lack. We recommend specific courses, certifications, and micro-credentials.</p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="feature-card glass-card">
+                <div class="feature-icon feature-icon-pink">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3>Smart Auto-Matching</h3>
+                <p>We automatically rank and notify you of jobs where you meet the required threshold, reducing application fatigue and increasing interview rates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Dashboard Mockup Section -->
+    <section id="analysis" class="dashboard-preview">
+        <div class="dashboard-container">
+            <div class="dashboard-text">
+                <h2>Visualize Your <span class="gradient-text">Growth</span></h2>
+                <p>Our intelligent dashboard continuously updates as you complete courses and gain experience. Watch your skill-match score climb closer to 100%.</p>
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-check text-cyan"></i> Real-time market demand tracking</li>
+                    <li><i class="fa-solid fa-check text-cyan"></i> Predictive salary algorithms</li>
+                    <li><i class="fa-solid fa-check text-cyan"></i> Automated resume optimization</li>
+                </ul>
+                <button class="btn btn-primary mt-4" onclick="window.location.href='dashboard.html'">View Sample Dashboard</button>
+            </div>
+            <div class="dashboard-mockup glass-card">
+                <div class="mockup-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="mockup-body">
+                    <div class="mockup-sidebar">
+                        <div class="sidebar-item active"></div>
+                        <div class="sidebar-item"></div>
+                        <div class="sidebar-item"></div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-widget title-widget">
+                            <span class="widget-title">Target Role: Senior Full Stack Developer</span>
+                            <span class="widget-score text-cyan">87% Match</span>
+                        </div>
+                        <div class="mockup-row">
+                            <div class="mockup-widget flex-2">
+                                <span class="widget-subtitle">Missing Skills (Gap)</span>
+                                <div class="skill-bar">
+                                    <span class="skill-name">GraphQL</span>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 20%;"></div></div>
+                                </div>
+                                <div class="skill-bar">
+                                    <span class="skill-name">AWS DevOps</span>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 45%;"></div></div>
+                                </div>
+                            </div>
+                            <div class="mockup-widget flex-1">
+                                <span class="widget-subtitle">Suggested Course</span>
+                                <div class="course-card">
+                                    <div class="course-icon"><i class="fa-brands fa-aws"></i></div>
+                                    <div class="course-info">
+                                        <div class="line w-100"></div>
+                                        <div class="line w-70"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="cta-box glass-card">
+            <h2>Ready to Transform Your Career Trajectory?</h2>
+            <p>Join over 50,000 professionals using NexGen AI to secure high-paying roles.</p>
+            <div class="cta-form">
+                <input type="email" placeholder="Enter your email address" class="glass-input">
+                <button class="btn btn-primary" onclick="window.location.href='register.html'">Start Free Analysis</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3><i class="fa-solid fa-brain"></i> NexGen Careers</h3>
+                <p>AI job portal management system blending skill gap analysis with actionable career pathways.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <a href="#">Candidates</a>
+                <a href="#">Employers</a>
+                <a href="#">Pricing</a>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <a href="#">Career Blog</a>
+                <a href="#">Skill Matrices</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NexGen AI Careers. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

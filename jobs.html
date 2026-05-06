@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search | NexGen Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(20, 20, 40, 0.8), transparent);
+        }
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .search-form {
+            display: flex;
+            background: rgba(10, 10, 25, 0.9);
+            padding: 1rem;
+            border-radius: 50px;
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+            gap: 1rem;
+        }
+        .search-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            outline: none;
+            font-size: 1.1rem;
+        }
+        .jobs-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+        }
+        .filter-sidebar {
+            padding: 2rem;
+            height: fit-content;
+        }
+        .filter-group { margin-bottom: 2rem; }
+        .filter-group h4 { margin-bottom: 1rem; color: var(--text-secondary); }
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .job-card {
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .job-info h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .job-company { color: var(--text-secondary); margin-bottom: 1rem; }
+        .job-tags span {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+        .job-match {
+            text-align: right;
+        }
+        .match-score {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+        }
+    </style>
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo"><span class="gradient-text"><i class="fa-solid fa-brain"></i> NexGen</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Job Search</a></li>
+                <li><a href="analysis.html">Skill Gap Analysis</a></li>
+                <li><a href="guidance.html">Career Guidance</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="window.location.href='login.html'">Log In</button>
+                <button class="btn btn-primary" onclick="window.location.href='dashboard.html'">My Dashboard</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1 class="gradient-text" style="font-size: 4rem;">Find Your Next Role</h1>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 1rem auto; font-size: 1.2rem;">AI-Matched jobs tailored to your skills and progression.</p>
+    </div>
+
+    <div class="search-container">
+        <div class="search-form">
+            <i class="fa-solid fa-search" style="padding: 1rem; color: var(--text-secondary);"></i>
+            <input type="text" placeholder="Job title, keywords, or company...">
+            <button class="btn btn-primary" style="padding: 1rem 2rem;">Search AI Match</button>
+        </div>
+    </div>
+
+    <div class="jobs-layout">
+        <aside class="filter-sidebar glass-card">
+            <div class="filter-group">
+                <h4>Job Type</h4>
+                <label class="filter-item"><input type="checkbox" checked> Full-time</label>
+                <label class="filter-item"><input type="checkbox"> Contract</label>
+                <label class="filter-item"><input type="checkbox"> Remote</label>
+            </div>
+            <div class="filter-group">
+                <h4>Match Score</h4>
+                <label class="filter-item"><input type="radio" name="match"> 90%+</label>
+                <label class="filter-item"><input type="radio" name="match" checked> 80%+</label>
+                <label class="filter-item"><input type="radio" name="match"> Any</label>
+            </div>
+        </aside>
+
+        <main class="jobs-feed">
+            <div class="job-card glass-card">
+                <div class="job-info">
+                    <h3>Senior React Developer</h3>
+                    <p class="job-company"><i class="fa-solid fa-building"></i> TechVision Inc. &nbsp; | &nbsp; <i class="fa-solid fa-location-dot"></i> Remote</p>
+                    <div class="job-tags">
+                        <span>React</span><span>TypeScript</span><span>$140k - $160k</span>
+                    </div>
+                </div>
+                <div class="job-match">
+                    <div class="match-score">94%</div>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">AI Match</p>
+                    <button class="btn btn-outline" style="margin-top: 1rem;" onclick="window.location.href='analysis.html'">View Gap</button>
+                </div>
+            </div>
+
+            <div class="job-card glass-card">
+                <div class="job-info">
+                    <h3>Machine Learning Engineer</h3>
+                    <p class="job-company"><i class="fa-solid fa-building"></i> DataFlow Systems &nbsp; | &nbsp; <i class="fa-solid fa-location-dot"></i> New York, NY</p>
+                    <div class="job-tags">
+                        <span>Python</span><span>TensorFlow</span><span>$150k - $180k</span>
+                    </div>
+                </div>
+                <div class="job-match">
+                    <div class="match-score" style="color: var(--neon-pink);">82%</div>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">AI Match</p>
+                    <button class="btn btn-outline" style="margin-top: 1rem;" onclick="window.location.href='analysis.html'">View Gap</button>
+                </div>
+            </div>
+            
+            <div class="job-card glass-card">
+                <div class="job-info">
+                    <h3>Frontend Architect</h3>
+                    <p class="job-company"><i class="fa-solid fa-building"></i> GlobalFin Network &nbsp; | &nbsp; <i class="fa-solid fa-location-dot"></i> London, UK (Hybrid)</p>
+                    <div class="job-tags">
+                        <span>Vue.js</span><span>Web Performance</span><span>£90k - £120k</span>
+                    </div>
+                </div>
+                <div class="job-match">
+                    <div class="match-score">91%</div>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">AI Match</p>
+                    <button class="btn btn-outline" style="margin-top: 1rem;" onclick="window.location.href='analysis.html'">View Gap</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

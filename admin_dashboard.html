@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | NexGen Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding-top: 80px; }
+        .dashboard-layout {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+        .sidebar {
+            width: 280px;
+            background: rgba(10, 10, 25, 0.8);
+            border-right: 1px solid var(--glass-border);
+            padding: 2rem;
+        }
+        .sidebar-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        .sidebar-nav a.active, .sidebar-nav a:hover {
+            background: rgba(138, 43, 226, 0.2);
+            color: white;
+            border-left: 4px solid var(--neon-purple);
+        }
+        .main-content {
+            flex: 1;
+            padding: 3rem;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            background: rgba(0,0,0,0.3);
+            color: var(--neon-cyan);
+        }
+        tr:hover {
+            background: rgba(138, 43, 226, 0.05);
+        }
+        select {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem;
+            border-radius: 6px;
+        }
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo"><span class="gradient-text"><i class="fa-solid fa-brain"></i> NexGen Admin</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <ul class="sidebar-nav">
+                <li><a href="admin_dashboard.html" class="active"><i class="fa-solid fa-users"></i> Students</a></li>
+                <li><a href="index.html" style="margin-top: 2rem;" onclick="localStorage.removeItem('isLoggedIn')"><i class="fa-solid fa-sign-out"></i> Log Out</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h1 style="font-size: 2.5rem; margin-bottom: 2rem;">Manage Students</h1>
+            
+            <div class="glass-card" style="padding: 2rem; overflow-x: auto;">
+                <table id="students-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Job Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-list">
+                        <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function loadStudents() {
+            fetch('http://localhost:3000/api/admin/users')
+                .then(res => res.json())
+                .then(users => {
+                    const tbody = document.getElementById('students-list');
+                    tbody.innerHTML = '';
+                    users.forEach(user => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <select id="status-${user.id}">
+                                    <option value="Not Placed" ${user.job_status === 'Not Placed' ? 'selected' : ''}>Not Placed</option>
+                                    <option value="Placed" ${user.job_status === 'Placed' ? 'selected' : ''}>Placed</option>
+                                    <option value="Pending" ${user.job_status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                </select>
+                            </td>
+                            <td style="display:flex; gap: 0.5rem;">
+                                <button class="btn btn-primary btn-small" onclick="updateUser(${user.id})">Update</button>
+                                <button class="btn btn-outline btn-small" style="color:var(--neon-pink); border-color:var(--neon-pink);" onclick="deleteUser(${user.id})">Delete</button>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(err => {
+                    console.error('Failed to load users:', err);
+                });
+        }
+
+        function updateUser(id) {
+            const status = document.getElementById(`status-${id}`).value;
+            fetch(`http://localhost:3000/api/admin/users/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ job_status: status })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message || 'Updated successfully');
+                loadStudents();
+            })
+            .catch(err => alert('Update failed'));
+        }
+
+        function deleteUser(id) {
+            if(confirm('Are you sure you want to delete this student?')) {
+                fetch(`http://localhost:3000/api/admin/users/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message || 'Deleted successfully');
+                    loadStudents();
+                })
+                .catch(err => alert('Delete failed'));
+            }
+        }
+
+        // Run on load
+        window.addEventListener('load', loadStudents);
+    </script>
+</body>
+</html>

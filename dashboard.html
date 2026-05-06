@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dashboard | NexGen Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding-top: 80px; }
+        .dashboard-layout {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+        .sidebar {
+            width: 280px;
+            background: rgba(10, 10, 25, 0.8);
+            border-right: 1px solid var(--glass-border);
+            padding: 2rem;
+        }
+        .sidebar-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        .sidebar-nav a.active, .sidebar-nav a:hover {
+            background: rgba(138, 43, 226, 0.2);
+            color: white;
+            border-left: 4px solid var(--neon-purple);
+        }
+        .main-content {
+            flex: 1;
+            padding: 3rem;
+            overflow-y: auto;
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .stat-card {
+            padding: 2rem;
+            text-align: center;
+        }
+        .stat-val {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            background: linear-gradient(to right, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo"><span class="gradient-text"><i class="fa-solid fa-brain"></i> NexGen</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Job Search</a></li>
+                <li><a href="analysis.html">Skill Gap Analysis</a></li>
+                <li><a href="guidance.html">Career Guidance</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <ul class="sidebar-nav">
+                <li><a href="dashboard.html" class="active"><i class="fa-solid fa-house"></i> Overview</a></li>
+                <li><a href="analysis.html"><i class="fa-solid fa-chart-pie"></i> My Gap Analysis</a></li>
+                <li><a href="guidance.html"><i class="fa-solid fa-compass"></i> Learning Roadmaps</a></li>
+                <li><a href="jobs.html"><i class="fa-solid fa-bookmark"></i> Saved Jobs</a></li>
+                <li><a href="index.html" style="margin-top: 2rem;"><i class="fa-solid fa-sign-out"></i> Log Out</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="profile-header">
+                <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                <div>
+                    <h1 style="font-size: 2.5rem;">Welcome back, Alex!</h1>
+                    <p style="color: var(--text-secondary);">Your AI profile is currently tuned for <strong style="color: white;">Full Stack Engineering</strong>.</p>
+                </div>
+            </div>
+
+            <div class="grid-cards">
+                <div class="glass-card stat-card">
+                    <h3>Overall Market Match</h3>
+                    <div class="stat-val">84%</div>
+                    <p style="color: #27c93f;"><i class="fa-solid fa-arrow-up"></i> +2% this week</p>
+                </div>
+                <div class="glass-card stat-card">
+                    <h3>Pending Gap Skills</h3>
+                    <div class="stat-val" style="background: linear-gradient(to right, #ff5f56, #ffbd2e); -webkit-background-clip: text;">3</div>
+                    <p style="color: var(--text-secondary);">Courses recommended</p>
+                </div>
+                <div class="glass-card stat-card">
+                    <h3>Auto-Applied Roles</h3>
+                    <div class="stat-val" style="background: linear-gradient(to right, var(--neon-cyan), #fff); -webkit-background-clip: text;">12</div>
+                    <p style="color: var(--text-secondary);">4 Interviews Pending</p>
+                </div>
+            </div>
+            
+            <h2 style="margin-bottom: 2rem;">Recent AI Insights</h2>
+            <div class="glass-card" style="padding: 2rem;">
+                <div style="display: flex; gap: 1rem; align-items:flex-start;">
+                    <i class="fa-solid fa-lightbulb" style="color: var(--neon-cyan); font-size: 2rem;"></i>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem;">Demand for "GraphQL" is spiking in your target areas.</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Based on 1,400 new job postings matching your profile, adding GraphQL could increase your match rate by 6%.</p>
+                        <button class="btn btn-outline" onclick="window.location.href='guidance.html'">Add to Learning Roadmap</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
